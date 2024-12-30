@@ -21,5 +21,9 @@ node {
             #trivy image --format json --output trivy-report.json hello-world
            # trivy image --format template --template "@html.tpl" --output trivy-report.html hello-world
         '''
-    }   
+    }
+    stage('Archive Trivy CSV Report') {
+        // Archive the CSV report as an artifact
+        archiveArtifacts artifacts: 'trivy-report.csv', allowEmptyArchive: false
+    }    
 }
