@@ -16,7 +16,7 @@ node {
             # Ensure Trivy is installed and available on the Jenkins agent
             #trivy image --severity CRITICAL,HIGH --no-progress --exit-code 1 hello-world
             #trivy image --format json --output trivy-report.json hello-world
-            trivy image --format template --template "@contrib/html.tpl" --output trivy-report.html hello-world
+            trivy image --format template --template "@html.tpl" --output trivy-report.html hello-world
         '''
     }
     stage ('Publish Trivy Report') {
