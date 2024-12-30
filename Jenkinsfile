@@ -14,9 +14,9 @@ node {
                 wget -O html.tpl https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl
             fi        
             # Ensure Trivy is installed and available on the Jenkins agent
-            #trivy image --severity CRITICAL,HIGH --no-progress --exit-code 1 hello-world
+            trivy image --severity CRITICAL,HIGH --no-progress --format template --output trivy-report.html --exit-code 1 hello-world
             #trivy image --format json --output trivy-report.json hello-world
-            trivy image --format template --template "@html.tpl" --output trivy-report.html hello-world
+           # trivy image --format template --template "@html.tpl" --output trivy-report.html hello-world
         '''
     }
     stage ('Publish Trivy Report') {
