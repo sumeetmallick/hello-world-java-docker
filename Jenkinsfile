@@ -28,8 +28,5 @@ node {
             alwaysLinkToLastBuild: true,
             allowMissing: false
         ])        
-
-        // Display Trivy report content in the console (optional)
-        #sh label: '', script: 'cat trivy-report.json'
     }    
 }
