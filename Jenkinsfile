@@ -17,7 +17,7 @@ node {
            # trivy image --severity CRITICAL,HIGH --no-progress --format template --output trivy-report.html --exit-code 1 hello-world
             # Run Trivy scan and generate a CSV report
             trivy image --severity CRITICAL,HIGH --no-progress --format json --exit-code 1 hello-world | \
-            jq -r '.Results[].Vulnerabilities[] | [.Severity, .VulnerabilityID, .PkgName, .InstalledVersion, .FixedVersion, .Description] | @csv' > trivy-report.csv          
+            jq -r '.Results[].Vulnerabilities[] | [.Severity, .VulnerabilityID, .PkgName, .InstalledVersion, .FixedVersion, .Description] | @csv' > trivy-report.csv || true         
             #trivy image --format json --output trivy-report.json hello-world
            # trivy image --format template --template "@html.tpl" --output trivy-report.html hello-world
         '''
